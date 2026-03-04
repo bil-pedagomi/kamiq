@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Škoda Kamiq 1.6 TDI — À Vendre</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0d0e10;
+      --surface: #17191d;
+      --surface2: #1e2126;
+      --border: #32363d;
+      --accent: #c8a04a;
+      --accent2: #e8c06a;
+      --text: #e8e9ea;
+      --muted: #a8acb3;
+      --green: #3ddc84;
+      --red: #ff6b6b;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 60px 48px 48px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #0a0b0d 0%, #12151a 50%, #0d1015 100%);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(ellipse 60% 50% at 80% 40%, rgba(200,160,74,0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 20% 80%, rgba(200,160,74,0.04) 0%, transparent 60%);
+    }
+
+    .hero-tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 24px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .hero-tag::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .hero h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: clamp(64px, 12vw, 140px);
+      line-height: 0.9;
+      letter-spacing: -2px;
+      text-transform: uppercase;
+      position: relative;
+      margin-bottom: 8px;
+    }
+
+    .hero h1 span {
+      display: block;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 300;
+      font-size: clamp(20px, 4vw, 36px);
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      color: #b8bcc5;
+      position: relative;
+      margin-bottom: 48px;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      position: relative;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      backdrop-filter: blur(8px);
+    }
+
+    .badge.highlight {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(200,160,74,0.08);
+    }
+
+    .badge .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .hero-year {
+      position: absolute;
+      right: 48px;
+      bottom: 60px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: clamp(100px, 20vw, 280px);
+      color: rgba(255,255,255,0.025);
+      line-height: 1;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    /* SECTIONS */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    section {
+      padding: 80px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* GRID SPECS */
+    .specs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .spec-cell {
+      background: var(--surface);
+      padding: 28px 24px;
+      transition: background 0.2s;
+    }
+    .spec-cell:hover { background: var(--surface2); }
+
+    .spec-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #b8bcc5;
+      margin-bottom: 8px;
+    }
+
+    .spec-value {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 22px;
+      color: var(--text);
+    }
+
+    .spec-value.accent { color: var(--accent); }
+    .spec-value.green { color: var(--green); }
+
+    /* HISTORIQUE */
+    .timeline {
+      position: relative;
+      padding-left: 24px;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      bottom: 8px;
+      width: 1px;
+      background: var(--border);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding: 0 0 36px 32px;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -4px;
+      top: 8px;
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid var(--bg);
+    }
+
+    .timeline-date {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .timeline-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 18px;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .timeline-detail {
+      font-size: 13px;
+      color: #c0c4cc;
+    }
+
+    .timeline-amount {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 4px 12px;
+      background: rgba(200,160,74,0.1);
+      border: 1px solid rgba(200,160,74,0.3);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 14px;
+      color: var(--accent);
+    }
+
+    /* CT */
+    .ct-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 600px) {
+      .ct-block { grid-template-columns: 1fr; }
+    }
+
+    .ct-cell {
+      background: var(--surface);
+      padding: 24px;
+    }
+
+    .ct-result {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 20px;
+      background: rgba(61,220,132,0.1);
+      border: 1px solid rgba(61,220,132,0.3);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 16px;
+      color: var(--green);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+
+    .ct-warning {
+      font-size: 13px;
+      color: #c8ccd4;
+      padding: 12px 16px;
+      border-left: 2px solid var(--accent);
+      background: rgba(200,160,74,0.05);
+    }
+    .ct-warning strong { color: var(--accent); display: block; margin-bottom: 4px; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+
+    /* INVOICE DETAIL */
+    .invoice-block {
+      margin-top: 16px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .invoice-group {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+    }
+    .invoice-group-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .invoice-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      font-size: 14px;
+      color: #dde0e5;
+    }
+    .invoice-line:last-child { border-bottom: none; }
+    .invoice-line.muted { color: #c0c4cc; font-style: italic; }
+    .invoice-line span:last-child {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      white-space: nowrap;
+      margin-left: 16px;
+    }
+    .invoice-total {
+      padding: 20px 24px;
+      background: var(--surface2);
+    }
+    .invoice-subtotal {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      color: #c0c4cc;
+      padding: 4px 0;
+    }
+    .invoice-line-total {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    /* VIN */
+    .vin-block {
+      padding: 32px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .vin-label {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .vin-code {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 28px;
+      letter-spacing: 4px;
+      color: var(--accent);
+    }
+
+    .vin-status {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border: 1px solid rgba(61,220,132,0.3);
+      background: rgba(61,220,132,0.08);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      letter-spacing: 1px;
+      color: var(--green);
+      text-transform: uppercase;
+    }
+
+    .status-pill::before {
+      content: '✓';
+      font-size: 10px;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+      text-align: center;
+    }
+
+    footer p {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #b0b4bb;
+    }
+
+    @media (max-width: 768px) {
+      .hero, .container { padding-left: 20px; padding-right: 20px; }
+      .hero { padding-top: 40px; padding-bottom: 36px; }
+      .hero-year { display: none; }
+      .specs-grid { grid-template-columns: 1fr 1fr; }
+      section { padding: 48px 0; }
+      .ct-block { grid-template-columns: 1fr; }
+      .vin-block { flex-direction: column; align-items: flex-start; }
+      .vin-code { font-size: 20px; letter-spacing: 2px; }
+    }
+    @media (max-width: 480px) {
+      .specs-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 52px; }
+      .hero-sub { font-size: 16px; }
+    }
+
+    /* Animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 0.7s ease forwards;
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in:nth-child(1) { animation-delay: 0.1s; }
+    .fade-in:nth-child(2) { animation-delay: 0.2s; }
+    .fade-in:nth-child(3) { animation-delay: 0.3s; }
+    .fade-in:nth-child(4) { animation-delay: 0.4s; }
+    .fade-in:nth-child(5) { animation-delay: 0.5s; }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-tag fade-in">Véhicule à vendre · Particulier</div>
+  <h1 class="fade-in">ŠKODA<span>KAMIQ</span></h1>
+  <p class="hero-sub fade-in">1.6 TDI · 6 CV · Gris Foncé</p>
+  <div class="hero-badges fade-in">
+    <div class="badge highlight"><span class="dot"></span> CT Valide jusqu'en 2028</div>
+    <div class="badge">68 231 km</div>
+    <div class="badge">2020 · 2 propriétaires</div>
+    <div class="badge">Diesel</div>
+  </div>
+  <div class="hero-year">2020</div>
+</section>
+
+<!-- CARACTÉRISTIQUES TECHNIQUES -->
+<div class="container">
+  <section>
+    <div class="section-label">Caractéristiques techniques</div>
+    <div class="specs-grid">
+      <div class="spec-cell">
+        <div class="spec-label">Marque / Modèle</div>
+        <div class="spec-value">Škoda Kamiq</div>
+      </div>
+      <div class="spec-cell">
+        <div class="spec-label">1ère mise en circulation</div>
+        <div class="spec-value">12 / 10 / 2020</div>
+      </div>
+      <div class="spec-cell">
+        <div class="spec-label">Kilométrage</div>
+        <div class="spec-value accent">68 231 km</div>
+      </div>
+      <div class="spec-cell">
+        <div class="spec-label">Énergie</div>
+        <div class="spec-value">Diesel (GO)</div>
+      </div>
+      <div class="spec-cell">
+        <div class="spec-label">Puissance</div>
+        <div class="spec-value">85 kW · 6 CV</div>
+      </div>
+      <div class="spec-cell">
+        <div class="spec-label">Cylindrée</div>
+        <div class="spec-value">1 598 cm³</div>
+      </div>
+      <div class="spec-cell">
+        <div class="spec-label">Couleur</div>
+        <div class="spec-value">Gris Foncé</div>
+      </div>
+      <div class="spec-cell">
+        <div class="spec-label">Places</div>
+        <div class="spec-value">5</div>
+      </div>
+      <div class="spec-cell">
+        <div class="spec-label">Émissions CO₂</div>
+        <div class="spec-value">141 g/km</div>
+      </div>
+      <div class="spec-cell">
+        <div class="spec-label">Norme</div>
+        <div class="spec-value">Euro 6</div>
+      </div>
+      <div class="spec-cell">
+        <div class="spec-label">Catégorie</div>
+        <div class="spec-value">M1 — VP</div>
+      </div>
+      <div class="spec-cell">
+        <div class="spec-label">Nombre de titulaires</div>
+        <div class="spec-value">2</div>
+      </div>
+      <div class="spec-cell">
+        <div class="spec-label">Date d'émission CI</div>
+        <div class="spec-value">18 / 02 / 2026</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTROLE TECHNIQUE -->
+  <section>
+    <div class="section-label">Contrôle Technique</div>
+    <div class="ct-block">
+      <div class="ct-cell">
+        <div class="spec-label">Résultat</div>
+        <div class="ct-result">✓ Favorable</div>
+        <div class="spec-label">Date du CT</div>
+        <div class="spec-value" style="font-size:18px; margin-bottom:12px;">13 février 2026</div>
+        <div class="spec-label">Valide jusqu'au</div>
+        <div class="spec-value green" style="font-size:18px;">12 février 2028</div>
+      </div>
+      <div class="ct-cell">
+        <div class="spec-label">Centre de contrôle</div>
+        <div class="spec-value" style="font-size:16px; margin-bottom:12px;">ABF — Fontenay-sous-Bois</div>
+        <div class="spec-label" style="margin-bottom:12px;">Kilométrage relevé</div>
+        <div class="spec-value" style="font-size:18px; margin-bottom:20px;">68 231 km</div>
+        <div class="ct-warning">
+          <strong>⚠ Défaillance mineure</strong>
+          Pneumatiques : usure anormale (AVG, AVD) — non bloquant, à surveiller.
+        </div>
+      </div>
+    </div>
+    <p style="font-size:12px; color:#b8bcc5;">CT précédent : 27/02/2025 — Favorable à 63 563 km</p>
+    <div style="margin-top:16px; padding:14px 18px; border-left:2px solid var(--accent); background:rgba(200,160,74,0.06); font-size:13px; color:#c8ccd4; line-height:1.7;">
+      <strong style="display:block; font-family:'Barlow Condensed',sans-serif; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--accent); margin-bottom:6px;">ℹ️ Note sur le kilométrage</strong>
+      La révision du 13/02/2026 et le contrôle technique ont été effectués le même jour. Le kilométrage relevé sur la facture du garage (68 231 km) fait foi — le contrôleur technique a commis une erreur de saisie en inscrivant 74 744 km sur le procès-verbal.
+    </div>
+  </section>
+
+  <!-- HISTORIQUE ENTRETIENS -->
+  <section>
+    <div class="section-label">Historique d'entretien</div>
+
+    <div style="display:flex; align-items:center; gap:20px; padding:20px 24px; background:var(--surface); border:1px solid var(--border); margin-bottom:36px; flex-wrap:wrap;">
+      <div style="flex:1; min-width:200px;">
+        <div style="font-family:'Barlow Condensed',sans-serif; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--accent); margin-bottom:6px;">Garage agréé</div>
+        <div style="font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:20px; color:var(--text); margin-bottom:2px;">Garage du Centre</div>
+        <div style="font-size:13px; color:#b8bcc5;">3 Rue Thiers, 94130 Nogent-sur-Marne</div>
+        <div style="font-size:13px; color:#b8bcc5; margin-top:2px;">📞 01 48 73 47 08</div>
+      </div>
+      <div style="display:flex; flex-direction:column; align-items:center; gap:4px;">
+        <div style="font-family:'Barlow Condensed',sans-serif; font-size:36px; font-weight:900; color:var(--accent); line-height:1;">4,5</div>
+        <div style="color:#f5a623; font-size:16px; letter-spacing:1px;">★★★★½</div>
+        <div style="font-size:11px; color:#b8bcc5; letter-spacing:1px;">97 avis Google</div>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-date">13 Février 2026 · 68 231 km · Facture N°5425</div>
+        <div class="timeline-title">Révision complète — Garage du Centre, Nogent-sur-Marne</div>
+
+        <div class="invoice-block">
+          <div class="invoice-group">
+            <div class="invoice-group-title">🔧 Vidange & entretien moteur</div>
+            <div class="invoice-line"><span>Filtre à huile moteur</span><span>13,35 €</span></div>
+            <div class="invoice-line"><span>Huile moteur 5W30 (3 L)</span><span>35,37 €</span></div>
+            <div class="invoice-line"><span>Liquide de refroidissement</span><span>2,99 €</span></div>
+            <div class="invoice-line"><span>Lave-glace</span><span>2,63 €</span></div>
+            <div class="invoice-line muted"><span>Main d'œuvre vidange + filtre à huile</span><span>49,88 €</span></div>
+          </div>
+          <div class="invoice-group">
+            <div class="invoice-group-title">🪟 Essuie-glaces avant</div>
+            <div class="invoice-line"><span>Bras essuie-glace (réf. 657955409)</span><span>62,79 €</span></div>
+            <div class="invoice-line"><span>Balai essuie-glace AV gauche</span><span>14,45 €</span></div>
+            <div class="invoice-line"><span>Balai essuie-glace AV droit</span><span>18,27 €</span></div>
+            <div class="invoice-line muted"><span>Main d'œuvre pose</span><span>15,00 €</span></div>
+          </div>
+          <div class="invoice-group">
+            <div class="invoice-group-title">🔴 Catadioptre</div>
+            <div class="invoice-line"><span>Catadioptre ARD (réf. 658945702)</span><span>16,58 €</span></div>
+            <div class="invoice-line muted"><span>Main d'œuvre remplacement</span><span>30,00 €</span></div>
+          </div>
+          <div class="invoice-total">
+            <div class="invoice-subtotal"><span>Pièces HT</span><span>166,43 €</span></div>
+            <div class="invoice-subtotal"><span>Main d'œuvre HT</span><span>94,87 €</span></div>
+            <div class="invoice-line-total"><span>Total TTC</span><span>313,56 €</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">27 Février 2025 · 63 563 km</div>
+        <div class="timeline-title">Contrôle Technique — Favorable</div>
+        <div class="timeline-detail">Aucune défaillance majeure</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">27 Mai 2024 · 54 052 km · Facture N°3600</div>
+        <div class="timeline-title">Révision complète — Garage du Centre, Nogent-sur-Marne</div>
+        <div class="invoice-block">
+          <div class="invoice-group">
+            <div class="invoice-group-title">🔧 Filtres & fluides</div>
+            <div class="invoice-line"><span>Filtre à air</span><span>21,73 €</span></div>
+            <div class="invoice-line"><span>Filtre à huile moteur</span><span>13,21 €</span></div>
+            <div class="invoice-line"><span>Filtre habitacle anti-pollen</span><span>17,50 €</span></div>
+            <div class="invoice-line"><span>Huile moteur 5W40 (3 L)</span><span>34,56 €</span></div>
+            <div class="invoice-line"><span>Liquide de refroidissement</span><span>2,99 €</span></div>
+            <div class="invoice-line"><span>Lave-glace</span><span>2,63 €</span></div>
+            <div class="invoice-line muted"><span>Main d'œuvre vidange + filtres</span><span>85,51 €</span></div>
+          </div>
+          <div class="invoice-group">
+            <div class="invoice-group-title">🛑 Freins</div>
+            <div class="invoice-line"><span>Jeu plaquettes frein AV</span><span>73,78 €</span></div>
+            <div class="invoice-line"><span>Jeu plaquettes frein AR</span><span>45,98 €</span></div>
+            <div class="invoice-line muted"><span>Main d'œuvre freins AV + AR (avec dépose roues)</span><span>108,00 €</span></div>
+          </div>
+          <div class="invoice-group">
+            <div class="invoice-group-title">🪟 Essuie-glaces</div>
+            <div class="invoice-line"><span>Balai essuie-glace AV gauche</span><span>13,43 €</span></div>
+            <div class="invoice-line"><span>Balai essuie-glace AV droit</span><span>17,51 €</span></div>
+            <div class="invoice-line"><span>Balai essuie-glace AR</span><span>13,14 €</span></div>
+            <div class="invoice-line muted"><span>Main d'œuvre pose</span><span>—</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">12 Octobre 2020</div>
+        <div class="timeline-title">Première immatriculation</div>
+        <div class="timeline-detail">Véhicule neuf · non importé</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIN & SITUATION ADMINISTRATIVE -->
+  <section>
+    <div class="section-label">Identification & Situation Administrative</div>
+    <div class="vin-block">
+      <div>
+        <div class="vin-label">Numéro VIN</div>
+        <div class="vin-code">TMBGG6NW1L3043324</div>
+      </div>
+      <div class="vin-status">
+        <div class="status-pill">Aucune opposition</div>
+        <div class="status-pill">Aucun gage</div>
+        <div class="status-pill">Non volé</div>
+        <div class="status-pill">Immatriculation valide</div>
+        <div class="status-pill">Non importé</div>
+      </div>
+    </div>
+    <div style="margin-top:20px; display:flex; flex-wrap:wrap; gap:12px;">
+      <p style="font-size:12px; color:var(--muted); width:100%;">Situation vérifiée via Histovec &amp; certificat de situation administrative — 24/02/2026</p>
+      <a href="https://file.notion.so/f/f/302291fa-6df5-4e45-9520-7aa4763abfe8/2744ad42-6221-4d0e-a8da-d5af15df4b33/24022026.pdf?table=block&id=21fad070-53f8-8059-a4d0-e6264e456767&spaceId=302291fa-6df5-4e45-9520-7aa4763abfe8&expirationTimestamp=1772661600000&signature=7fwO9tReZ5KC7hxe5kUOQDTxfkIpAKU52BASsg4jnU0&downloadName=24:02:2026.pdf" target="_blank" style="display:inline-flex;align-items:center;gap:10px;padding:12px 24px;border:1px solid var(--accent);color:var(--accent);background:rgba(200,160,74,0.08);font-family:'Barlow Condensed',sans-serif;font-size:13px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;" onmouseover="this.style.background='rgba(200,160,74,0.18)'" onmouseout="this.style.background='rgba(200,160,74,0.08)'">
+        &#8595; Rapport Histovec
+      </a>
+      <a href="https://file.notion.so/f/f/302291fa-6df5-4e45-9520-7aa4763abfe8/620141b7-37d0-47b3-9281-25ee2db37555/Certificat_de_situation.pdf?table=block&id=21fad070-53f8-8050-b554-c166d189089d&spaceId=302291fa-6df5-4e45-9520-7aa4763abfe8&expirationTimestamp=1772661600000&signature=vzalju0Uz2RN7UdhkRnCQfHF7KtlaF1yxmCYKnThPYg&downloadName=Certificat+de+situation.pdf" target="_blank" style="display:inline-flex;align-items:center;gap:10px;padding:12px 24px;border:1px solid var(--accent);color:var(--accent);background:rgba(200,160,74,0.08);font-family:'Barlow Condensed',sans-serif;font-size:13px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;" onmouseover="this.style.background='rgba(200,160,74,0.18)'" onmouseout="this.style.background='rgba(200,160,74,0.08)'">
+        &#8595; Certificat de Situation Administrative
+      </a>
+    </div>
+  </section>
+</div>
+
+<div class="container">
+  <section>
+    <div class="section-label">Localisation du véhicule</div>
+    <a href="https://maps.google.com/?q=24+boulevard+de+la+Marne,+94130+Nogent-sur-Marne" target="_blank" style="text-decoration:none; display:block;">
+      <div style="display:flex; align-items:center; gap:24px; padding:28px 32px; background:var(--surface); border:1px solid var(--border); transition:border-color 0.2s; flex-wrap:wrap;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+        <div style="font-size:36px; line-height:1;">📍</div>
+        <div style="flex:1; min-width:180px;">
+          <div style="font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:20px; color:var(--text); margin-bottom:4px;">24 Boulevard de la Marne</div>
+          <div style="font-size:14px; color:#b8bcc5;">94130 Nogent-sur-Marne</div>
+        </div>
+        <div style="display:inline-flex; align-items:center; gap:10px; padding:12px 24px; border:1px solid var(--accent); color:var(--accent); font-family:'Barlow Condensed',sans-serif; font-size:13px; letter-spacing:2px; text-transform:uppercase;">
+          Voir sur Google Maps →
+        </div>
+      </div>
+    </a>
+  </section>
+</div>
+
+<footer>
+  <div class="container">
+    <p>Škoda Kamiq · FT-307-HT · Dossier complet disponible sur demande</p>
+  </div>
+</footer>
+
+</body>
+</html>
